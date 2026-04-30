@@ -1,0 +1,86 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { clearUserInfo, setUserInfo } from "../features/authSlice"
+import { connectSocket, disconnectSocket } from "../../utils/socket";
+
+export const authApi = createApi({
+  reducerPath: "authApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:8000/",
+    credentials: "include",
+  }),
+  endpoints: (builder) => ({
+    UpdateUser: builder.mutation({
+      query: ({ _id, ...data }) => ({
+        url: `auth/update-profile?id=${_id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    loginUser: builder.mutation({
+      query: (data) => ({
+        url: "auth/login",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    registerUser: builder.mutation({
+      query: (data) => ({
+        url: "auth/register",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    forgotPassword: builder.mutation({
+      query: (email) => ({
+        url: "auth/forgotPassword",
+        method: "POST",
+        body: { email },
+      }),
+    }),
+
+    resetPassword: builder.mutation({
+      query: ({ token, newPassword }) => ({
+        url: "auth/resetPassword",
+        method: "POST",
+        body: { token, newPassword },
+      }),
+    }),
+    getMe: builder.query({
+      query: () => "me",
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        console.log("starting")
+        try {
+          const { data } = await queryFulfilled
+          console.log("success", data)
+          if (!data.success) {
+            dispatch(clearUserInfo())
+            disconnectSocket();
+          } else {
+            dispatch(setUserInfo(data))
+            // Only connect socket if user exists and has _id
+            if (data.user && data.user._id) {
+              connectSocket(data.user._id);
+            }
+          }
+        } catch (err) {
+          console.log("error", err)
+          dispatch(clearUserInfo())
+        }
+      },
+    }),
+    logout: builder.query({
+      query: () => "auth/logout",
+    }),
+  }),
+})
+
+export const {
+  useLoginUserMutation,
+  useRegisterUserMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+  useGetMeQuery,
+  useLazyLogoutQuery,
+  useUpdateUserMutation,
+} = authApi

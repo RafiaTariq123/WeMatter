@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <rect width="200" height="50" fill="#00BFA5" rx="3"/>
+  <text x="50" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Easy</text>
+  <text x="100" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="normal" fill="white" text-anchor="middle">Paisa</text>
+  <circle cx="165" cy="25" r="6" fill="#ffffff" opacity="0.3"/>
+  <path d="M160 25 L170 25" stroke="#ffffff" stroke-width="1" opacity="0.8"/>
+  <circle cx="175" cy="25" r="1.5" fill="#ffffff"/>
+</svg>

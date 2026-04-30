@@ -1,0 +1,11 @@
+<svg width="100" height="30" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- EasyPaisa Official Logo -->
+  <g>
+    <!-- Green crescent shape -->
+    <path d="M 15 8 C 8 8, 3 13, 3 20 C 3 27, 8 32, 15 32 C 22 32, 27 27, 27 20 C 27 13, 22 8, 15 8 Z M 15 10 C 21 10, 25 14, 25 20 C 25 26, 21 30, 15 30 C 9 30, 5 26, 5 20 C 5 14, 9 10, 15 10 Z" fill="#00BFA5"/>
+    <!-- Green dot -->
+    <circle cx="35" cy="20" r="3" fill="#00BFA5"/>
+    <!-- easypaisa text in lowercase -->
+    <text x="45" y="24" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#00BFA5">easypaisa</text>
+  </g>
+</svg>

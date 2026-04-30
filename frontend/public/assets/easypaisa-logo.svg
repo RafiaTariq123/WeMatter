@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <rect width="120" height="40" fill="#00BFA5" rx="6"/>
+  <text x="8" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="white">Easy</text>
+  <text x="42" y="26" font-family="Arial, sans-serif" font-size="16" font-weight="400" fill="white">Paisa</text>
+</svg>
